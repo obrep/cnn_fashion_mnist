@@ -1,0 +1,30 @@
+Name:                     cnn-serving-service
+Namespace:                default
+Labels:                   run=cnn-serving-service
+Annotations:              <none>
+Selector:                 app=cnn-serving-server
+Type:                     LoadBalancer
+IP:                       10.63.250.174
+LoadBalancer Ingress:     35.228.63.71
+Port:                     <unset>  8501/TCP
+TargetPort:               8501/TCP
+NodePort:                 <unset>  31216/TCP
+Endpoints:                10.60.9.2:8501
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.63.240.1
+Port:              https  443/TCP
+TargetPort:        443/TCP
+Endpoints:         35.228.165.150:443
+Session Affinity:  None
+Events:            <none>

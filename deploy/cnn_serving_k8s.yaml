@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cnn-serving-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cnn-serving-server
+    spec:
+      containers:
+        - name: cnn-serving-container
+          image: gcr.io/deploy-ml-cnn/cnn_serving:v1.0
+          ports:
+            - containerPort: 8501
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: cnn-serving-service
+  name: cnn-serving-service
+spec:
+  ports:
+    - port: 8501
+      targetPort: 8501
+  selector:
+    app: cnn-serving-server
+  type: LoadBalancer
